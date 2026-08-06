@@ -1,7 +1,6 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <HelloWorld />
+  <main class="app-shell">
+    <h1>Portfolio</h1>
+    <p>Welcome to my portfolio!</p>
+  </main>
 </template>
