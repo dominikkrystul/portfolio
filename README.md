@@ -4,6 +4,8 @@ Personal portfolio website built with Vue 3, TypeScript, and Vite.
 
 ## Installation
 
+Use Node.js 22.12.0 or newer. With nvm, run `nvm use` from the repository root.
+
 ```bash
 npm install
 ```
@@ -20,6 +22,16 @@ npm run dev
 npm run build
 npm run preview
 ```
+
+## Quality checks
+
+```bash
+npm run type-check
+npm run lint
+npm run format:check
+```
+
+Run `npm run format` to apply the shared Prettier formatting rules.
 
 ## Project structure
 

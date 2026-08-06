@@ -14,11 +14,11 @@ decisions rather than introducing unrelated values.
 
 ## Color
 
-| Role | Value |
-| --- | --- |
-| Primary text | `#111827` |
-| Secondary text | `#4b5563` |
-| Page background | `#f9fafb` |
+| Role                    | Value     |
+| ----------------------- | --------- |
+| Primary text            | `#111827` |
+| Secondary text          | `#4b5563` |
+| Page background         | `#f9fafb` |
 | Background gradient end | `#e5e7eb` |
 
 The page background uses a subtle `135deg` gradient from `#f9fafb` to
