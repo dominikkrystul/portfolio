@@ -1,5 +1,35 @@
-# Vue 3 + TypeScript + Vite
+# Portfolio
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+Personal portfolio website built with Vue 3, TypeScript, and Vite.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Installation
+
+```bash
+npm install
+```
+
+## Development
+
+```bash
+npm run dev
+```
+
+## Production build
+
+```bash
+npm run build
+npm run preview
+```
+
+## Project structure
+
+- `docs/` — architecture, roadmap, design system, and decisions.
+- `src/components/` — reusable UI grouped by responsibility.
+- `src/layouts/` — page-level layout shells.
+- `src/views/` — route-level pages.
+- `src/data/` — portfolio content and static data.
+- `src/router/` — route configuration.
+- `src/types/` — shared TypeScript types.
+- `src/assets/` — images and icons.
+
+See `docs/architecture.md` for the fuller structure.
