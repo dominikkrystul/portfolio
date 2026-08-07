@@ -1,6 +1,7 @@
 <template>
-  <main class="app-shell">
-    <h1>Portfolio</h1>
-    <p>Welcome to my portfolio!</p>
-  </main>
+  <RouterView />
 </template>
+
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+</script>
