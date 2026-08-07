@@ -1,19 +1,22 @@
 # Roadmap
 
-## Foundation
+## Completed
 
-- Establish the portfolio page structure and navigation.
+- Establish the portfolio page structure and shared navigation.
 - Add responsive layout and accessible semantic markup.
-- Define the visual language in `docs/design-system.md`.
+- Define the warm, minimal visual language in `docs/design-system.md`.
+- Add the About page and homepage About preview.
+- Add the Skills page with typed content, local technology logos, engineering practice, and learning focus.
+- Verify type-checking, linting, formatting, and production builds for the Skills work.
 
-## Content
+## Next
 
-- Add the introduction, skills, projects, and contact sections.
-- Move repeatable portfolio content into `src/data/`.
-- Add project images and icons under `src/assets/`.
+- Expand project case studies with clearer context, decisions, and outcomes.
+- Add project images and supporting assets under `src/assets/` when they are ready.
+- Add a public contact path once a suitable contact address or channel has been chosen.
 
 ## Quality and delivery
 
 - Add tests when the UI stabilizes.
-- Run the production build before merging changes.
+- Keep running the production build before merging changes.
 - Configure automated deployment after the first complete version is ready.

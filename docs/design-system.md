@@ -1,38 +1,43 @@
 # Design system
 
-The current interface uses a small, deliberately minimal visual system. Shared
-styles live in `src/style.css`; component-specific styles should follow these
-decisions rather than introducing unrelated values.
+The interface uses a small visual system. Shared styles
+live in `src/style.css`; component-specific styles should follow these decisions
+instead of adding one-off values.
 
 ## Typography
 
-- Primary font: `Inter`, with system UI fallbacks.
-- Body line height: `1.5`.
+- Primary font: `Avenir Next`, with `Avenir` and `Century Gothic` fallbacks.
+- Body copy uses a comfortable line height between `1.45` and `1.65`.
 - Base weight: `400`.
-- Main headings use a responsive `clamp()` size between `2rem` and `3rem`.
-- Supporting text uses `1.125rem` with the secondary text color.
+- Main headings use responsive `clamp()` sizes and tight letter spacing.
+- Supporting text uses the muted text color and stays within a readable line length.
 
 ## Color
 
-| Role                    | Value     |
-| ----------------------- | --------- |
-| Primary text            | `#111827` |
-| Secondary text          | `#4b5563` |
-| Page background         | `#f9fafb` |
-| Background gradient end | `#e5e7eb` |
+| Role            | Token          | Value     |
+| --------------- | -------------- | --------- |
+| Primary text    | `--ink`        | `#24211f` |
+| Secondary text  | `--muted`      | `#756e67` |
+| Page background | `--paper`      | `#f4f1eb` |
+| Deeper paper    | `--paper-deep` | `#e9e3da` |
+| Borders         | `--line`       | `#d5cec4` |
+| Accent          | `--accent`     | `#a64b32` |
 
-The page background uses a subtle `135deg` gradient from `#f9fafb` to
-`#e5e7eb`. Color should not be the only way to communicate meaning.
+The page uses a solid warm paper background. Color should not be the only way
+to communicate meaning.
 
 ## Layout and spacing
 
 - The application fills the viewport with a minimum height of `100vh`.
-- The centered app shell uses CSS grid and `2rem` outer padding.
+- The centered content shell is capped at `1160px` with responsive horizontal padding.
 - Global sizing uses `box-sizing: border-box`.
-- Prefer responsive CSS and content-driven sizing over fixed widths.
+- Use responsive CSS and content-driven sizing over fixed widths.
+- Use whitespace and simple one- or two-column editorial layouts before adding panels.
+- Use borders only to clarify a section boundary or a related group of content.
 
 ## Accessibility and motion
 
 - Use semantic landmarks and keep text readable against the documented colors.
 - Preserve visible keyboard focus states when adding interactive controls.
 - Respect `prefers-reduced-motion` for any future transitions or animation.
+- Use real links for navigation and visible labels for content sections.

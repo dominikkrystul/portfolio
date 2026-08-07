@@ -13,6 +13,13 @@ This portfolio is a Vue 3 application built with TypeScript and Vite.
 - `src/composables/` contains reusable Composition API logic.
 - `src/assets/` contains imported images and icons.
 
+## Current routes
+
+- `/` composes the homepage, including the short About and study/approach sections.
+- `/about` composes the full personal profile and working approach.
+- `/projects` lists the portfolio projects.
+- `/skills` presents technology groups, engineering practice, and current learning areas.
+
 ## Responsibilities and boundaries
 
 - `src/main.ts` is the application entry point and mounts the root app.
@@ -32,6 +39,15 @@ This portfolio is a Vue 3 application built with TypeScript and Vite.
 - `src/assets/` owns imported visual assets; files that need stable public URLs
   belong in `public/` instead.
 - `src/router/` owns route definitions and navigation configuration only.
+
+## About and Skills boundaries
+
+- `src/data/about.ts` is the source of truth for About copy used by both the homepage and About page.
+- `src/data/skills.ts` is the source of truth for skill categories, engineering practice, and learning topics.
+- `src/components/about/` contains reusable About sections; `AboutView.vue` composes the full page.
+- `src/components/skills/` contains focused presentation components for category cards, engineering practice, and learning focus.
+- `SkillsView.vue` composes the Skills page and should not own the skill content itself.
+- Technology logos are imported from `src/assets/icons/skills/`; public, stable URLs are reserved for assets that need direct URL access.
 
 ## Dependency direction
 
