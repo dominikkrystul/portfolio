@@ -1,8 +1,16 @@
 <template>
-  <main class="app-shell">
-    <h1>Projects</h1>
-    <p>Project details will be added here.</p>
-    <RouterLink to="/">Back home</RouterLink>
+  <main class="page" aria-labelledby="projects-title">
+    <header class="page-heading">
+      <p class="section-label">Selected work</p>
+      <h1 id="projects-title">Projects</h1>
+      <p>
+        Case studies and experiments will live here as the portfolio takes
+        shape.
+      </p>
+    </header>
+    <RouterLink class="text-link" to="/"
+      >Back home <span aria-hidden="true">↗</span></RouterLink
+    >
   </main>
 </template>
 
