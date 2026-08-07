@@ -194,10 +194,25 @@ h1 {
   line-height: 1.65;
 }
 
+.intro-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .text-link span,
 .header-contact span {
   display: inline-block;
   margin-left: 0.25rem;
+}
+
+.secondary-link {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.secondary-link:hover {
+  color: var(--ink);
 }
 
 .home-note {

@@ -1,24 +1,26 @@
 <template>
   <main class="page home-page">
     <section class="intro" aria-labelledby="home-title">
-      <p class="intro-kicker">Software engineer · Netherlands</p>
-      <h1 id="home-title">
-        Building thoughtful digital products with a clear point of view.
-      </h1>
+      <p class="intro-kicker">Software Engineering student</p>
+      <h1 id="home-title">I like understanding how software works.</h1>
       <p class="intro-summary">
-        I’m Dominik Krystul. This portfolio is a working record of how I
-        approach product thinking, frontend craft, and maintainable software.
+        I’m Dominik Krystul. I’m studying Software Engineering and use this
+        portfolio to keep track of the projects I build and the decisions I make
+        along the way.
       </p>
-      <RouterLink class="text-link" to="/projects"
-        >Explore selected work <span aria-hidden="true">→</span></RouterLink
-      >
+      <div class="intro-actions">
+        <RouterLink class="text-link" to="/projects">
+          View projects <span aria-hidden="true">→</span>
+        </RouterLink>
+        <a class="secondary-link" href="#approach">How I work</a>
+      </div>
     </section>
 
-    <section class="home-note" aria-labelledby="approach-title">
-      <p class="section-label" id="approach-title">How I work</p>
+    <section id="approach" class="home-note" aria-labelledby="approach-title">
+      <p class="section-label" id="approach-title">Study &amp; approach</p>
       <p>
-        Clear structure first. Useful details second. Every interface should
-        make the next decision easier.
+        I start by making sure I understand the problem. Then I choose a
+        structure I can explain, test, and improve as I learn more.
       </p>
     </section>
   </main>
