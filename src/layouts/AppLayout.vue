@@ -66,6 +66,7 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeydown))
           <RouterLink to="/projects" active-class="is-active"
             >Projects</RouterLink
           >
+          <RouterLink to="/about" active-class="is-active">About</RouterLink>
         </nav>
 
         <RouterLink class="header-contact" to="/projects">

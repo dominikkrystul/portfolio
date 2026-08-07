@@ -23,9 +23,12 @@
         structure I can explain, test, and improve as I learn more.
       </p>
     </section>
+
+    <AboutSection />
   </main>
 </template>
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import AboutSection from '../components/home/AboutSection.vue'
 </script>
