@@ -20,5 +20,15 @@ export default tseslint.config(
       },
     },
   },
+  {
+    files: ['**/*.vue'],
+    languageOptions: {
+      parser: vue.parser,
+      parserOptions: {
+        parser: tseslint.parser,
+        sourceType: 'module',
+      },
+    },
+  },
   prettier,
 )

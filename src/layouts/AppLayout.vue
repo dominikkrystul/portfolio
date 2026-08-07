@@ -1,3 +1,32 @@
+<script setup lang="ts">
+import { onMounted, onUnmounted, shallowRef, watch } from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
+
+const year = new Date().getFullYear()
+const isMenuOpen = shallowRef(false)
+const route = useRoute()
+
+function closeMenu() {
+  isMenuOpen.value = false
+}
+
+function toggleMenu() {
+  isMenuOpen.value = !isMenuOpen.value
+}
+
+function handleKeydown(event: KeyboardEvent) {
+  if (event.key === 'Escape') closeMenu()
+}
+
+watch(
+  () => route.fullPath,
+  () => closeMenu(),
+)
+
+onMounted(() => window.addEventListener('keydown', handleKeydown))
+onUnmounted(() => window.removeEventListener('keydown', handleKeydown))
+</script>
+
 <template>
   <div class="site-shell">
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -9,7 +38,25 @@
           <span class="wordmark__name">Dominik Krystul</span>
         </RouterLink>
 
-        <nav class="site-nav" aria-label="Primary navigation">
+        <button
+          class="menu-toggle"
+          type="button"
+          :aria-expanded="isMenuOpen"
+          aria-controls="primary-navigation"
+          @click="toggleMenu"
+        >
+          <span>{{ isMenuOpen ? 'Close' : 'Menu' }}</span>
+          <span class="menu-toggle__icon" aria-hidden="true">{{
+            isMenuOpen ? '×' : '＋'
+          }}</span>
+        </button>
+
+        <nav
+          id="primary-navigation"
+          class="site-nav"
+          :class="{ 'is-open': isMenuOpen }"
+          aria-label="Primary navigation"
+        >
           <RouterLink
             to="/"
             active-class="is-active"
@@ -21,9 +68,9 @@
           >
         </nav>
 
-        <RouterLink class="header-contact" to="/projects"
-          >View work <span aria-hidden="true">↗</span></RouterLink
-        >
+        <RouterLink class="header-contact" to="/projects">
+          View work <span aria-hidden="true">↗</span>
+        </RouterLink>
       </div>
     </header>
 
@@ -39,9 +86,3 @@
     </footer>
   </div>
 </template>
-
-<script setup lang="ts">
-import { RouterLink } from 'vue-router'
-
-const year = new Date().getFullYear()
-</script>

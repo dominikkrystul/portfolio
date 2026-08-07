@@ -111,6 +111,27 @@ a:focus-visible {
   font-size: 0.9rem;
 }
 
+.menu-toggle {
+  display: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.menu-toggle__icon {
+  display: inline-block;
+  width: 1rem;
+  margin-left: 0.25rem;
+  color: var(--accent);
+  font-size: 1.2rem;
+  line-height: 0.8;
+  text-align: center;
+}
+
 .site-nav a,
 .header-contact,
 .text-link {
@@ -251,15 +272,29 @@ h1 {
     width: 100%;
   }
 
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.6rem;
+  }
+
   .site-nav {
     order: 3;
     width: 100%;
+    display: none;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .site-nav.is-open {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
   }
 
   .header-contact {
-    position: absolute;
-    right: 1.5rem;
-    top: 1.55rem;
+    display: none;
   }
 
   .site-header__inner,
