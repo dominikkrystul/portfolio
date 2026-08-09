@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
-import aiTutorRobotImage from '../../assets/images/ai-tutor-robot.png'
+import AiTutorMascot from './AiTutorMascot.vue'
 import type { Project } from '../../types/projects'
 
 const props = defineProps<{
@@ -21,14 +21,11 @@ const statusLabel = props.project.status.replace('-', ' ')
         }"
       >
         <RouterLink :to="`/projects/${project.slug}`">
-          <span class="project-card__title-text">{{ project.title }}</span>
-          <img
+          <AiTutorMascot
             v-if="project.slug === 'ai-tutor'"
-            class="project-card__title-robot"
-            :src="aiTutorRobotImage"
-            alt=""
-            aria-hidden="true"
+            class="project-card__mascot"
           />
+          <span class="project-card__title-text">{{ project.title }}</span>
         </RouterLink>
       </h2>
       <p class="project-card__summary">{{ project.summary }}</p>
@@ -111,60 +108,18 @@ const statusLabel = props.project.status.replace('-', ' ')
 
 .project-card__title-text {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
-.project-card__title-robot {
+.project-card__mascot {
   position: absolute;
-  bottom: 0;
-  left: calc(100% - 0.45rem);
-  z-index: 0;
-  width: clamp(3.85rem, 5.6vw, 5rem);
-  height: clamp(4.5rem, 6.5vw, 5.75rem);
-  max-width: none;
-  object-fit: cover;
-  object-position: 50% 0;
+  bottom: 0.1rem;
+  left: clamp(3.7rem, 7vw, 5rem);
+  z-index: 1;
+  width: clamp(5.4rem, 8.5vw, 6.5rem);
+  height: clamp(4rem, 6vw, 4.75rem);
   pointer-events: none;
-  opacity: 0;
-  transform: translateX(-4.25rem) rotate(0deg);
-  transform-origin: 50% 100%;
-  animation: ai-tutor-title-robot 4.2s ease 450ms 1 both;
-}
-
-@keyframes ai-tutor-title-robot {
-  0%,
-  14% {
-    opacity: 0;
-    transform: translateX(-4.25rem) rotate(0deg);
-  }
-
-  26% {
-    opacity: 1;
-    transform: translateX(-2.4rem) rotate(0deg);
-  }
-
-  43% {
-    opacity: 1;
-    transform: translateX(0) rotate(0deg);
-  }
-
-  53% {
-    transform: translateX(0) rotate(-5deg);
-  }
-
-  63% {
-    transform: translateX(0) rotate(5deg);
-  }
-
-  73% {
-    opacity: 1;
-    transform: translateX(0) rotate(0deg);
-  }
-
-  100% {
-    opacity: 0;
-    transform: translateX(1.5rem) rotate(0deg);
-  }
+  overflow: clip;
 }
 
 .project-card__summary {
@@ -202,6 +157,14 @@ const statusLabel = props.project.status.replace('-', ' ')
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 420ms ease-out;
+}
+
+@media (hover: hover) {
+  .project-card__image-wrap:hover .project-card__image,
+  .project-card__image-wrap:focus-visible .project-card__image {
+    transform: scale(1.025);
+  }
 }
 
 .project-card__links {
@@ -231,9 +194,12 @@ const statusLabel = props.project.status.replace('-', ' ')
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .project-card__title-robot {
-    display: none;
-    animation: none;
+  .project-card__mascot {
+    opacity: 0.72;
+  }
+
+  .project-card__image {
+    transform: none;
   }
 }
 </style>

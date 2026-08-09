@@ -1,15 +1,26 @@
 <script setup lang="ts">
+import { computed, useTemplateRef } from 'vue'
 import { RouterLink } from 'vue-router'
-import AiTutorRobot from './AiTutorRobot.vue'
+import { useScrollProgress } from '../../composables/useScrollProgress'
 import type { Project } from '../../types/projects'
 
 defineProps<{
   project: Project
 }>()
+
+const caseStudyRef = useTemplateRef<HTMLElement>('caseStudy')
+const scrollProgress = useScrollProgress(caseStudyRef)
+const progressStyle = computed(() => ({
+  '--case-study-progress': `${scrollProgress.value * 100}%`,
+}))
 </script>
 
 <template>
-  <article class="case-study">
+  <article ref="caseStudy" class="case-study">
+    <div class="case-study__progress" aria-hidden="true">
+      <div class="case-study__progress-indicator" :style="progressStyle" />
+    </div>
+
     <RouterLink class="case-study__back text-link" to="/projects">
       Back to projects <span aria-hidden="true">←</span>
     </RouterLink>
@@ -71,10 +82,6 @@ defineProps<{
       >
         <h2>How we approached it</h2>
         <p>{{ project.approach }}</p>
-        <AiTutorRobot
-          v-if="project.slug === 'ai-tutor'"
-          class="case-study__robot"
-        />
       </div>
     </section>
 
@@ -122,6 +129,22 @@ defineProps<{
 <style scoped>
 .case-study {
   padding: 5rem 0 7rem;
+}
+
+.case-study__progress {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  height: 2px;
+  background: var(--line);
+  pointer-events: none;
+}
+
+.case-study__progress-indicator {
+  width: var(--case-study-progress);
+  height: 100%;
+  background: var(--accent);
+  transition: width 100ms linear;
 }
 
 .case-study__back {
@@ -230,17 +253,6 @@ defineProps<{
   line-height: 1.6;
 }
 
-.case-study__story-part--ai-tutor {
-  position: relative;
-  padding-right: 7.5rem;
-}
-
-.case-study__robot {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-
 .case-study__highlights ul {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -322,15 +334,6 @@ defineProps<{
     grid-template-columns: 1fr;
     gap: 2.5rem;
     padding: 3rem 0;
-  }
-
-  .case-study__story-part--ai-tutor {
-    padding-right: 0;
-  }
-
-  .case-study__robot {
-    position: static;
-    margin: 1.5rem 0 0 auto;
   }
 
   .case-study__highlights ul,
