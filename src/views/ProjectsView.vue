@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import ProjectCard from '../components/projects/ProjectCard.vue'
 import { projects } from '../data/projects'
 </script>
 
@@ -12,23 +12,11 @@ import { projects } from '../data/projects'
     </header>
 
     <section class="project-list" aria-label="Portfolio projects">
-      <article
+      <ProjectCard
         v-for="project in projects"
         :key="project.slug"
-        class="project-entry"
-      >
-        <div>
-          <p class="project-entry__status">{{ project.status }}</p>
-          <h2>{{ project.title }}</h2>
-          <p>{{ project.summary }}</p>
-        </div>
-        <div class="project-entry__meta">
-          <p>{{ project.technologies.join(' · ') }}</p>
-          <RouterLink class="text-link" :to="`/projects/${project.slug}`">
-            View project <span aria-hidden="true">↗</span>
-          </RouterLink>
-        </div>
-      </article>
+        :project="project"
+      />
     </section>
   </main>
 </template>

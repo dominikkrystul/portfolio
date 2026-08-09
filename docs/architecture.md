@@ -47,6 +47,7 @@ This portfolio is a Vue 3 application built with TypeScript and Vite.
 - `src/data/projects.ts` is the source of truth for project cards and project detail pages.
 - `src/components/about/` contains reusable About sections; `AboutView.vue` composes the full page.
 - `src/components/skills/` contains focused presentation components for category cards, engineering practice, and learning focus.
+- `src/components/projects/ProjectCard.vue` renders project summaries from the shared project model and is reused by project listings.
 - `SkillsView.vue` composes the Skills page and should not own the skill content itself.
 - Technology logos are imported from `src/assets/icons/skills/`; public, stable URLs are reserved for assets that need direct URL access.
 
