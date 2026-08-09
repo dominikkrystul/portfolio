@@ -44,16 +44,22 @@ This portfolio is a Vue 3 application built with TypeScript and Vite.
 
 - `src/data/about.ts` is the source of truth for About copy used by both the homepage and About page.
 - `src/data/skills.ts` is the source of truth for skill categories, engineering practice, and learning topics.
-- `src/data/projects.ts` is the source of truth for project cards and project detail pages.
+- `src/data/projects.ts` is the source of truth for project cards, the featured homepage selection, and project detail pages.
 - `src/components/about/` contains reusable About sections; `AboutView.vue` composes the full page.
 - `src/components/skills/` contains focused presentation components for category cards, engineering practice, and learning focus.
-- `src/components/projects/ProjectCard.vue` renders project summaries from the shared project model and is reused by project listings.
+- `src/components/projects/ProjectCard.vue` renders project summaries from the shared project model and is reused by project listings and the homepage's featured work section.
+- `src/components/home/FeaturedProjects.vue` composes the featured project selection and links visitors to the full project overview.
 - `SkillsView.vue` composes the Skills page and should not own the skill content itself.
 - Technology logos are imported from `src/assets/icons/skills/`; public, stable URLs are reserved for assets that need direct URL access.
 
 ## Project data model
 
 Each project in `src/data/projects.ts` uses a stable `slug` as its identifier.
+
+The optional `featured` flag controls whether a project appears in the homepage's
+selected work section. The exported `featuredProjects` collection is derived from
+the main project list, so adding or removing a featured project only requires a
+data change.
 The required fields are `slug`, `title`, `summary`, `description`,
 `technologies`, and `status`. The optional fields are `image` and `links`.
 `links` may contain `live` and `repository` URLs.

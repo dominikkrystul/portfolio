@@ -9,6 +9,7 @@ export const projects: Project[] = [
       'A Vue and TypeScript portfolio for presenting projects, decisions, and the way I approach software engineering.',
     technologies: ['Vue', 'TypeScript', 'Vite'],
     status: 'in-progress',
+    featured: true,
     links: {
       repository: 'https://github.com/dominikkrystul/portfolio',
     },
@@ -18,3 +19,5 @@ export const projects: Project[] = [
 export function getProjectBySlug(slug: string) {
   return projects.find((project) => project.slug === slug)
 }
+
+export const featuredProjects = projects.filter((project) => project.featured)

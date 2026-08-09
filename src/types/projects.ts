@@ -13,5 +13,6 @@ export interface Project {
   image?: string
   technologies: string[]
   status: ProjectStatus
+  featured?: boolean
   links?: ProjectLinks
 }

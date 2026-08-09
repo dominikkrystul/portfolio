@@ -16,6 +16,8 @@
       </div>
     </section>
 
+    <FeaturedProjects :projects="featuredProjects" />
+
     <section id="approach" class="home-note" aria-labelledby="approach-title">
       <p class="section-label" id="approach-title">Study &amp; approach</p>
       <p>
@@ -30,5 +32,7 @@
 
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import FeaturedProjects from '../components/home/FeaturedProjects.vue'
 import AboutSection from '../components/home/AboutSection.vue'
+import { featuredProjects } from '../data/projects'
 </script>
