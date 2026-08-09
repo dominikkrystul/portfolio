@@ -60,6 +60,10 @@ The optional `featured` flag controls whether a project appears in the homepage'
 selected work section. The exported `featuredProjects` collection is derived from
 the main project list, so adding or removing a featured project only requires a
 data change.
+
+Project detail pages read the same data model. Optional `role`, `challenge`,
+`approach`, `highlights`, `learnings`, and `links.documentation` fields provide
+contextual detail without introducing project-specific templates.
 The required fields are `slug`, `title`, `summary`, `description`,
 `technologies`, and `status`. The optional fields are `image` and `links`.
 `links` may contain `live` and `repository` URLs.

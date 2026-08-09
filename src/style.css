@@ -568,24 +568,9 @@ h1 {
   margin-top: 3rem;
 }
 
-.project-detail__content p {
-  color: var(--muted);
-  line-height: 1.55;
-}
-
-.project-detail__content {
-  max-width: 620px;
-  margin: 3rem 0;
-}
-
-.project-detail__content p:first-child {
-  margin-top: 0;
-  color: var(--ink);
-  font-size: 1.15rem;
-}
-
-.project-detail__technologies {
-  margin-top: 2rem;
+.project-detail-page {
+  width: min(100% - 3rem, 1160px);
+  margin: 0 auto;
 }
 
 .page--compact {
@@ -648,7 +633,8 @@ h1 {
 
   .site-header__inner,
   .site-footer__inner,
-  .site-main {
+  .site-main,
+  .project-detail-page {
     width: min(100% - 2rem, 1160px);
   }
 
