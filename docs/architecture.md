@@ -44,10 +44,23 @@ This portfolio is a Vue 3 application built with TypeScript and Vite.
 
 - `src/data/about.ts` is the source of truth for About copy used by both the homepage and About page.
 - `src/data/skills.ts` is the source of truth for skill categories, engineering practice, and learning topics.
+- `src/data/projects.ts` is the source of truth for project cards and project detail pages.
 - `src/components/about/` contains reusable About sections; `AboutView.vue` composes the full page.
 - `src/components/skills/` contains focused presentation components for category cards, engineering practice, and learning focus.
 - `SkillsView.vue` composes the Skills page and should not own the skill content itself.
 - Technology logos are imported from `src/assets/icons/skills/`; public, stable URLs are reserved for assets that need direct URL access.
+
+## Project data model
+
+Each project in `src/data/projects.ts` uses a stable `slug` as its identifier.
+The required fields are `slug`, `title`, `summary`, `description`,
+`technologies`, and `status`. The optional fields are `image` and `links`.
+`links` may contain `live` and `repository` URLs.
+
+`status` is one of `draft`, `in-progress`, or `complete`. A missing image or
+link is valid and the views hide those elements rather than rendering broken
+placeholders. Detail routes resolve projects by slug and show a not-found state
+when no matching entry exists.
 
 ## Dependency direction
 
