@@ -43,8 +43,6 @@ defineProps<{
   align-items: end;
   justify-content: space-between;
   gap: 2rem;
-  padding-bottom: 1.25rem;
-  border-bottom: 1px solid var(--line);
 }
 
 .featured-projects h2 {
@@ -54,7 +52,7 @@ defineProps<{
 }
 
 .featured-projects__list {
-  margin-top: 0;
+  margin-top: 3rem;
 }
 
 .featured-projects__empty {

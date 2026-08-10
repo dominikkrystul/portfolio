@@ -256,7 +256,9 @@ h1 {
   display: grid;
   grid-template-columns: 180px 1fr;
   gap: 2rem;
-  padding-top: 2rem;
+  margin-top: 5rem;
+  padding: 3rem 0 0;
+  border-top: 1px solid var(--line);
 }
 
 .home-note p:last-child {
