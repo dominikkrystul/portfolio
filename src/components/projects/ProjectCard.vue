@@ -147,6 +147,8 @@ const statusLabel = props.project.status.replace('-', ' ')
 
 .project-card__image-wrap {
   display: block;
+  width: min(100%, 34rem);
+  margin-left: auto;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background: var(--paper-deep);
@@ -190,6 +192,10 @@ const statusLabel = props.project.status.replace('-', ' ')
 
   .project-card__aside {
     align-self: auto;
+  }
+
+  .project-card__image-wrap {
+    width: 100%;
   }
 }
 

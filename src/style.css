@@ -152,6 +152,43 @@ a:focus-visible {
   font-weight: 700;
 }
 
+.header-contact,
+.text-link,
+.secondary-link,
+.project-card__external-link,
+.case-study__documentation {
+  position: relative;
+  display: inline-block;
+}
+
+.header-contact::after,
+.text-link::after,
+.secondary-link::after,
+.project-card__external-link::after,
+.case-study__documentation::after {
+  position: absolute;
+  bottom: -0.2rem;
+  left: 0;
+  width: 0;
+  height: 1px;
+  content: '';
+  background: currentcolor;
+  transition: width 160ms ease;
+}
+
+.header-contact:hover::after,
+.header-contact:focus-visible::after,
+.text-link:hover::after,
+.text-link:focus-visible::after,
+.secondary-link:hover::after,
+.secondary-link:focus-visible::after,
+.project-card__external-link:hover::after,
+.project-card__external-link:focus-visible::after,
+.case-study__documentation:hover::after,
+.case-study__documentation:focus-visible::after {
+  width: 100%;
+}
+
 .site-main {
   flex: 1;
 }

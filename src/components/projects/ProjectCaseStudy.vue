@@ -1,26 +1,14 @@
 <script setup lang="ts">
-import { computed, useTemplateRef } from 'vue'
 import { RouterLink } from 'vue-router'
-import { useScrollProgress } from '../../composables/useScrollProgress'
 import type { Project } from '../../types/projects'
 
 defineProps<{
   project: Project
 }>()
-
-const caseStudyRef = useTemplateRef<HTMLElement>('caseStudy')
-const scrollProgress = useScrollProgress(caseStudyRef)
-const progressStyle = computed(() => ({
-  '--case-study-progress': `${scrollProgress.value * 100}%`,
-}))
 </script>
 
 <template>
-  <article ref="caseStudy" class="case-study">
-    <div class="case-study__progress" aria-hidden="true">
-      <div class="case-study__progress-indicator" :style="progressStyle" />
-    </div>
-
+  <article class="case-study">
     <RouterLink class="case-study__back text-link" to="/projects">
       Back to projects <span aria-hidden="true">←</span>
     </RouterLink>
@@ -131,22 +119,6 @@ const progressStyle = computed(() => ({
   padding: 5rem 0 7rem;
 }
 
-.case-study__progress {
-  position: fixed;
-  inset: 0 0 auto;
-  z-index: 20;
-  height: 2px;
-  background: var(--line);
-  pointer-events: none;
-}
-
-.case-study__progress-indicator {
-  width: var(--case-study-progress);
-  height: 100%;
-  background: var(--accent);
-  transition: width 100ms linear;
-}
-
 .case-study__back {
   display: inline-block;
 }
@@ -174,8 +146,6 @@ const progressStyle = computed(() => ({
 
 .case-study__visual {
   margin: 4rem 0 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
   background: var(--paper-deep);
 }
 
@@ -191,8 +161,7 @@ const progressStyle = computed(() => ({
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(220px, 0.7fr);
   gap: 5rem;
-  padding: 4rem 0;
-  border-bottom: 1px solid var(--line);
+  padding: 5rem 0 4rem;
 }
 
 .case-study__description h2,
@@ -216,6 +185,12 @@ const progressStyle = computed(() => ({
   margin: 0;
 }
 
+.case-study__details {
+  align-self: start;
+  padding-left: 2rem;
+  border-left: 1px solid var(--line);
+}
+
 .case-study__details div + div {
   margin-top: 1.4rem;
 }
@@ -234,16 +209,14 @@ const progressStyle = computed(() => ({
 }
 
 .case-study__highlights {
-  padding: 3.5rem 0;
-  border-bottom: 1px solid var(--line);
+  padding: 4rem 0;
 }
 
 .case-study__story {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 5rem;
-  padding: 3.5rem 0;
-  border-bottom: 1px solid var(--line);
+  padding: 4rem 0;
 }
 
 .case-study__story-part p {
@@ -268,8 +241,7 @@ const progressStyle = computed(() => ({
 }
 
 .case-study__learnings {
-  padding: 3.5rem 0;
-  border-bottom: 1px solid var(--line);
+  padding: 4rem 0;
 }
 
 .case-study__learnings ul {
@@ -324,6 +296,13 @@ const progressStyle = computed(() => ({
     grid-template-columns: 1fr;
     gap: 2.5rem;
     padding: 3rem 0;
+  }
+
+  .case-study__details {
+    padding-top: 2rem;
+    padding-left: 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
   }
 
   .case-study__highlights {
