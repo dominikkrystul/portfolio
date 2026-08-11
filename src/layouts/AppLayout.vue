@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, shallowRef, watch } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
+import SiteFooter from '../components/layout/SiteFooter.vue'
 
-const year = new Date().getFullYear()
 const isMenuOpen = shallowRef(false)
 const route = useRoute()
 
@@ -70,8 +70,8 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeydown))
           <RouterLink to="/about" active-class="is-active">About</RouterLink>
         </nav>
 
-        <RouterLink class="header-contact" to="/projects">
-          View work <span aria-hidden="true">↗</span>
+        <RouterLink class="header-contact" to="/#contact">
+          Contact <span aria-hidden="true">↗</span>
         </RouterLink>
       </div>
     </header>
@@ -80,11 +80,6 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeydown))
       <slot />
     </main>
 
-    <footer class="site-footer">
-      <div class="site-footer__inner">
-        <p>© {{ year }} Dominik Krystul</p>
-        <p>Designed and built with Vue.</p>
-      </div>
-    </footer>
+    <SiteFooter />
   </div>
 </template>
