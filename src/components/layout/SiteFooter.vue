@@ -54,6 +54,18 @@ const year = new Date().getFullYear()
           <span>GitHub</span>
           <span aria-hidden="true">↗</span>
         </a>
+        <a
+          class="site-footer__link"
+          href="/cv_EN.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 3h8l4 4v14H6zM14 3v5h5M9 13h6M9 17h6" />
+          </svg>
+          <span>View CV</span>
+          <span aria-hidden="true">↗</span>
+        </a>
       </nav>
     </div>
 

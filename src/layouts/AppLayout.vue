@@ -68,6 +68,7 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeydown))
           >
           <RouterLink to="/skills" active-class="is-active">Skills</RouterLink>
           <RouterLink to="/about" active-class="is-active">About</RouterLink>
+          <a href="/cv_EN.pdf" target="_blank" rel="noreferrer">CV ↗</a>
         </nav>
 
         <RouterLink class="header-contact" to="/#contact">
