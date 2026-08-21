@@ -1,10 +1,19 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, shallowRef, watch } from 'vue'
+import {
+  nextTick,
+  onMounted,
+  onUnmounted,
+  shallowRef,
+  useTemplateRef,
+  watch,
+} from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
 import SiteFooter from '../components/layout/SiteFooter.vue'
 
 const isMenuOpen = shallowRef(false)
 const route = useRoute()
+const menuToggle = useTemplateRef<HTMLButtonElement>('menuToggle')
+const mainContent = useTemplateRef<HTMLElement>('mainContent')
 
 function closeMenu() {
   isMenuOpen.value = false
@@ -14,13 +23,21 @@ function toggleMenu() {
   isMenuOpen.value = !isMenuOpen.value
 }
 
-function handleKeydown(event: KeyboardEvent) {
-  if (event.key === 'Escape') closeMenu()
+async function handleKeydown(event: KeyboardEvent) {
+  if (event.key !== 'Escape' || !isMenuOpen.value) return
+
+  closeMenu()
+  await nextTick()
+  menuToggle.value?.focus()
 }
 
 watch(
   () => route.fullPath,
-  () => closeMenu(),
+  async () => {
+    closeMenu()
+    await nextTick()
+    mainContent.value?.focus({ preventScroll: true })
+  },
 )
 
 onMounted(() => window.addEventListener('keydown', handleKeydown))
@@ -39,6 +56,7 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeydown))
         </RouterLink>
 
         <button
+          ref="menuToggle"
           class="menu-toggle"
           type="button"
           :aria-expanded="isMenuOpen"
@@ -69,6 +87,9 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeydown))
           <RouterLink to="/skills" active-class="is-active">Skills</RouterLink>
           <RouterLink to="/about" active-class="is-active">About</RouterLink>
           <a href="/cv_EN.pdf" target="_blank" rel="noreferrer">CV ↗</a>
+          <RouterLink class="site-nav__contact" to="/#contact">
+            Contact <span aria-hidden="true">↗</span>
+          </RouterLink>
         </nav>
 
         <RouterLink class="header-contact" to="/#contact">
@@ -77,7 +98,7 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeydown))
       </div>
     </header>
 
-    <main id="main-content" class="site-main">
+    <main id="main-content" ref="mainContent" class="site-main" tabindex="-1">
       <slot />
     </main>
 
