@@ -26,6 +26,13 @@ This file records the decisions that shape the portfolio.
 ## Keep the visual language editorial
 
 - **Date:** 2026-08-07
-- **Decision:** Use warm paper tones, restrained borders, generous whitespace, and simple typography instead of dashboard-style cards or decorative effects.
+- **Decision:** Use lightly green paper tones, restrained borders, generous whitespace, and simple typography instead of dashboard-style cards or decorative effects.
 - **Context:** The portfolio should feel personal and readable to recruiters.
 - **Consequences:** Sections rely on hierarchy and spacing for structure. Decorative animation and repeated badges are avoided when they do not add meaning.
+
+## Keep the project mascot native
+
+- **Date:** 2026-08-21
+- **Decision:** Render the AI Tutor mascot as inline SVG and animate it with CSS.
+- **Context:** The mascot adds project-specific personality but does not need a 3D rendering stack.
+- **Consequences:** The greeting remains lightweight, uses the existing palette, and respects reduced-motion preferences without runtime dependencies.
