@@ -29,9 +29,11 @@ npm run preview
 npm run type-check
 npm run lint
 npm run format:check
+npm run audit:site
 ```
 
 Run `npm run format` to apply the shared Prettier formatting rules.
+See `docs/quality-assurance.md` for the audit budgets and manual QA matrix.
 
 ## Project structure
 

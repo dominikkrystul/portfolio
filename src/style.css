@@ -254,6 +254,7 @@ a:focus-visible {
 
 .site-main {
   flex: 1;
+  min-height: calc(100dvh - 68px);
 }
 
 .page {
