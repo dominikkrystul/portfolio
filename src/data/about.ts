@@ -1,5 +1,5 @@
-import cityTravelImage from '../assets/images/IMG_7375.jpeg'
-import mountainTravelImage from '../assets/images/IMG_8233.jpeg'
+import cityTravelImage from '../assets/images/IMG_7375.webp'
+import mountainTravelImage from '../assets/images/IMG_8233.webp'
 
 export const aboutContent = {
   intro: {
@@ -10,66 +10,79 @@ export const aboutContent = {
       title: 'Currently',
       items: [
         { label: 'Based in', value: 'Amsterdam' },
-        { label: 'Studying', value: 'Software Engineering at HvA' },
+        {
+          label: 'Studying',
+          value:
+            'Software Engineering at Amsterdam University of Applied Sciences',
+        },
         {
           label: 'Next up',
           value: 'An exchange semester in Switzerland',
         },
       ],
     },
+    internship: {
+      label: 'Looking for',
+      value: 'A software engineering internship',
+    },
   },
   study: {
-    title: 'Studying with ambition',
+    title: 'Learning through projects',
     paragraphs: [
-      'I am working towards graduating cum laude. So far, my grades have been 9s, with one 10.',
-      'I like projects that force me to learn something new. I am still finding out which parts of software engineering I want to focus on, so I use my studies to try different kinds of work.',
+      'I use my studies to build a strong foundation in software engineering.',
+      'I am drawn to projects that make me learn something new. My studies are where I try different parts of software engineering and find the work I want to keep getting better at.',
     ],
   },
   approach: {
     title: 'How I work',
-    paragraphs: [
-      'I usually start by asking what problem we are solving and who will use the result. I look at the context, write down what we know, and make a small prototype when we need to test an idea before building it.',
-      'In group projects, I often keep an eye on the planning and the quality of the work. I check where we are, help decide what needs attention next, and keep the sprint goal in view. We use Agile and Scrum, with sprint planning, retrospectives, Git, and GitHub.',
-    ],
     process: [
-      'Start with the problem and the people involved.',
-      'Research before choosing a direction.',
-      'Prototype the parts we are still unsure about.',
-      'Build, test, and adjust as we go.',
+      {
+        title: 'Ground answers in course material',
+        description:
+          'For AI Tutor, I built a RAG pipeline that retrieves relevant PDF passages for each answer, so the LLM uses teacher-uploaded lesson material as context.',
+        link: { label: 'View AI Tutor case study', to: '/projects/ai-tutor' },
+      },
+      {
+        title: 'Turn source data into a chart',
+        description:
+          'For StemWijs, I parsed the final-election XML and connected the cached results to the homepage chart.',
+        link: { label: 'View StemWijs case study', to: '/projects/stemwijs' },
+      },
+      {
+        title: 'Ship changes through checks',
+        description:
+          'I used feature branches and CI checks before deployment on both team projects.',
+        link: { label: 'View selected work', to: '/projects' },
+      },
     ],
   },
   personal: {
-    title: 'Outside my studies',
+    title: 'Curiosity beyond the classroom',
     introduction:
-      'Outside my studies, I spend my time at the gym, on the football pitch, or around a pool table with friends. I also enjoy travelling and seeing places I have not visited before.',
+      'Outside my studies, I make time for friends, travel, and seeing new places.',
     paragraphs: [
-      'From September 2026, I will spend six months in Lucerne, Switzerland, as part of my exchange semester. I want to experience daily life there and explore the country outside the classroom.',
-      'I also plan to give hiking a try while I am there. The Alps seem like a good place to start.',
+      'My exchange is also a chance to get to know daily life somewhere new and explore beyond the classroom.',
+      'I also plan to try hiking while I am there. The Alps seem like a good place to start.',
     ],
     gallery: [
-      { label: 'Mountains', size: 'featured', src: mountainTravelImage },
-      { label: 'City trips', size: 'supporting', src: cityTravelImage },
+      {
+        label: 'Mountain hikes',
+        alt: 'Dominik on a mountain hike',
+        size: 'featured',
+        src: mountainTravelImage,
+        width: 1000,
+        height: 1334,
+      },
+      {
+        label: 'Exploring cities',
+        alt: 'Dominik during a night-time city trip',
+        size: 'supporting',
+        src: cityTravelImage,
+        width: 800,
+        height: 905,
+      },
     ],
-    interests: [
-      {
-        label: 'Football',
-        description: 'Most weeks, I play football with friends.',
-      },
-      {
-        label: 'Gym',
-        description: 'Something I do regularly to stay active.',
-      },
-      {
-        label: 'Pool',
-        description: 'Evenings at the pool table with friends.',
-      },
-    ],
-    destination: {
-      title: 'Next destination',
-      from: '🇳🇱 Amsterdam',
-      to: '🇨🇭 Lucerne, Switzerland',
-      detail: 'Exchange semester',
-      dates: 'September 2026 – February 2027',
-    },
+    interestNote:
+      'Most weeks, I make time for football, the gym, or a game of pool.',
   },
 } as const
