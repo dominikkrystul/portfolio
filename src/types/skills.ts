@@ -2,9 +2,20 @@ export interface SkillCategory {
   id: string
   title: string
   description: string
-  technologies: string[]
-  experience: string[]
-  logos: SkillLogo[]
+  emphasis: 'foundation' | 'evidence'
+  evidence: SkillEvidence
+  technologies?: string[]
+  logos?: SkillLogo[]
+}
+
+export interface SkillEvidence {
+  projects: SkillEvidenceProject[]
+  detail: string
+}
+
+export interface SkillEvidenceProject {
+  label: string
+  to: string
 }
 
 export interface SkillLogo {
@@ -16,25 +27,11 @@ export interface LearningFocus {
   title: string
   description: string
   topics: LearningTopic[]
-  exchange: ExchangeFocus
 }
 
 export interface LearningTopic {
   id: string
   title: string
   description: string
-  icon:
-    'agents' | 'network' | 'language' | 'blockchain' | 'enterprise' | 'society'
-}
-
-export interface ExchangeFocus {
-  title: string
-  institution: string
-  dates: string
-  courses: string[]
-}
-
-export interface EngineeringSkillGroup {
-  title: string
-  items: string[]
+  icon: 'agents' | 'network' | 'enterprise'
 }

@@ -10,9 +10,9 @@ function logoClass(name: string) {
 }
 
 function additionalTechnologies(category: SkillCategory) {
-  const logoNames = new Set(category.logos.map((logo) => logo.name))
+  const logoNames = new Set(category.logos?.map((logo) => logo.name))
 
-  return category.technologies.filter(
+  return (category.technologies ?? []).filter(
     (technology) => !logoNames.has(technology),
   )
 }
@@ -22,17 +22,30 @@ function additionalTechnologies(category: SkillCategory) {
   <article
     :id="category.id"
     class="skill-category"
+    :class="`skill-category--${category.emphasis}`"
     :aria-labelledby="`skill-${category.id}`"
   >
     <div class="skill-category__copy">
       <h2 :id="`skill-${category.id}`">{{ category.title }}</h2>
       <p class="skill-category__description">{{ category.description }}</p>
-      <p class="skill-category__experience">
-        Projects have included {{ category.experience.join(', ') }}.
+      <p class="skill-category__evidence">
+        <strong>
+          <template
+            v-for="(project, index) in category.evidence.projects"
+            :key="project.to"
+          >
+            <span v-if="index" aria-hidden="true"> &amp; </span>
+            <RouterLink class="skill-category__case-link" :to="project.to">
+              {{ project.label }}
+            </RouterLink>
+          </template>
+        </strong>
+        <span aria-hidden="true"> · </span>
+        {{ category.evidence.detail }}
       </p>
     </div>
 
-    <div class="skill-category__tools">
+    <div v-if="category.logos?.length" class="skill-category__tools">
       <div class="skill-category__logos" aria-label="Selected technologies">
         <figure v-for="logo in category.logos" :key="logo.name">
           <span
@@ -63,10 +76,7 @@ function additionalTechnologies(category: SkillCategory) {
   gap: 4rem;
   align-items: center;
   padding: 2.75rem 0;
-}
-
-.skill-category:nth-child(even) .skill-category__copy {
-  order: 2;
+  scroll-margin-top: 1.5rem;
 }
 
 .skill-category h2 {
@@ -83,12 +93,46 @@ function additionalTechnologies(category: SkillCategory) {
   line-height: 1.6;
 }
 
-.skill-category__experience {
+.skill-category__evidence {
   max-width: 440px;
-  margin: 1.25rem 0 0;
-  color: var(--muted);
+  margin: 1rem 0 0;
+  color: var(--ink);
   font-size: 0.9rem;
   line-height: 1.55;
+}
+
+.skill-category__evidence strong {
+  font-weight: 700;
+}
+
+.skill-category__case-link {
+  display: inline-flex;
+  min-height: 24px;
+  align-items: center;
+  color: inherit;
+  text-decoration-color: color-mix(in srgb, currentcolor 48%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition:
+    color 160ms ease,
+    text-decoration-color 160ms ease,
+    transform 120ms ease-out;
+}
+
+.skill-category__case-link:focus-visible {
+  color: var(--accent);
+}
+
+.skill-category__case-link:active {
+  transform: scale(0.98);
+  transform-origin: left center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .skill-category__case-link:hover {
+    color: var(--accent);
+    text-decoration-color: currentcolor;
+  }
 }
 
 .skill-category__logos {
@@ -193,8 +237,7 @@ function additionalTechnologies(category: SkillCategory) {
   color: var(--muted);
   font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0;
 }
 
 .skill-category__technology-notes p {
@@ -204,7 +247,15 @@ function additionalTechnologies(category: SkillCategory) {
   line-height: 1.35;
 }
 
+.skill-category:nth-child(even) .skill-category__copy {
+  order: 2;
+}
+
 @media (max-width: 700px) {
+  .skill-category__case-link {
+    min-height: 44px;
+  }
+
   .skill-category {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -213,6 +264,12 @@ function additionalTechnologies(category: SkillCategory) {
 
   .skill-category:nth-child(even) .skill-category__copy {
     order: initial;
+  }
+}
+
+@media (pointer: coarse) {
+  .skill-category__case-link {
+    min-height: 44px;
   }
 }
 </style>
