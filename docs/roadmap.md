@@ -4,7 +4,7 @@
 
 - Establish the portfolio page structure and shared navigation.
 - Add responsive layout and accessible semantic markup.
-- Define the warm, minimal visual language in `docs/design-system.md`.
+- Define the restrained, forest-toned visual language in `DESIGN.md`.
 - Add the About page and homepage About preview.
 - Add the Skills page with typed content, local technology logos, engineering practice, and learning focus.
 - Verify type-checking, linting, formatting, and production builds for the Skills work.

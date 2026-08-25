@@ -1,3 +1,6 @@
 dist
 node_modules
+.impeccable
 package-lock.json
+public/robots.txt
+public/sitemap.xml
