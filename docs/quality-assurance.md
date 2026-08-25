@@ -3,14 +3,39 @@
 This document is the repeatable acceptance check for accessibility, responsive
 layout, performance, and discoverability. Run it after user-facing changes.
 
-## Automated site audit
+## Automated checks
+
+### Browser tests
+
+Vitest Browser Mode with Playwright is the functional-test foundation. It runs
+Vue components in Chromium, which makes navigation, keyboard interaction,
+computed CSS, and `prefers-reduced-motion` testable in the same environment
+visitors use. It is a better fit than a simulated DOM for this visual,
+interaction-led portfolio, while keeping the Vite configuration and test API
+in one toolchain.
+
+The suite verifies the homepage, project overview, every case study, Skills,
+About, not-found states, important links and images, the mobile menu, and
+normal and reduced-motion animation behaviour.
+
+```bash
+npm test
+npm run test:e2e
+```
+
+`npm test` watches during development; `npm run test:e2e` runs once for CI.
+
+### Performance, accessibility, and SEO
+
+Lighthouse remains a separate production-preview audit because browser tests
+assert behaviour, not measurable performance or accessibility scores.
 
 ```bash
 npm run audit:site
 ```
 
 The command builds the production site, starts a local preview, and audits
-Home, Projects, the AI Tutor detail page, Skills, and About with Lighthouse's
+Home, Projects, every project detail page, Skills, and About with Lighthouse's
 390 × 844 mobile profile. It fails when any route misses a budget:
 
 | Check                    |         Budget |
@@ -24,6 +49,12 @@ Home, Projects, the AI Tutor detail page, Skills, and About with Lighthouse's
 
 The ignored raw result is written to `.lighthouse/results.json`. Lighthouse is
 a regression check, not a substitute for assistive-technology testing.
+
+Run all automated checks locally before review:
+
+```bash
+npm run test:ci
+```
 
 ## Accessibility check
 
@@ -40,7 +71,7 @@ keyboard:
    alternative text, and content remains usable at 200% zoom.
 5. Enable reduced motion and confirm essential content remains available.
 
-Verified on 2026-08-21: all five routes scored 100 for accessibility; the
+Verified on 2026-08-25: all seven routes scored 100 for accessibility; the
 mobile menu exposed `aria-expanded`, opened its labelled navigation, closed
 with Escape, and produced no console warnings or errors.
 
@@ -64,13 +95,15 @@ Matrix last executed in the local browser on 2026-08-21.
 
 Lighthouse 13.4.1, simulated mobile throttling, measured on 2026-08-21:
 
-| Route           | Performance |    LCP |  TBT |   CLS |
-| --------------- | ----------: | -----: | ---: | ----: |
-| Home            |         100 | 1.60 s | 0 ms | 0.000 |
-| Projects        |          97 | 2.48 s | 0 ms | 0.000 |
-| AI Tutor detail |          98 | 2.33 s | 0 ms | 0.000 |
-| Skills          |         100 | 1.68 s | 0 ms | 0.000 |
-| About           |         100 | 1.27 s | 9 ms | 0.000 |
+| Route            | Performance |    LCP |  TBT |   CLS |
+| ---------------- | ----------: | -----: | ---: | ----: |
+| Home             |         100 | 1.60 s | 0 ms | 0.000 |
+| Projects         |          97 | 2.48 s | 0 ms | 0.000 |
+| AI Tutor detail  |          98 | 2.33 s | 0 ms | 0.000 |
+| StemWijs detail  |         100 | 1.68 s | 0 ms | 0.000 |
+| Portfolio detail |          99 | 1.82 s | 0 ms | 0.000 |
+| Skills           |         100 | 1.68 s | 0 ms | 0.000 |
+| About            |         100 | 1.27 s | 9 ms | 0.000 |
 
 The home portrait was reduced from 1,129,195 bytes (PNG) to 55,428 bytes
 (WebP). Reserving the initial viewport in `main` prevents the lazy-loaded route

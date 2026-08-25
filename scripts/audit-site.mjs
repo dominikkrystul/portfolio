@@ -7,7 +7,15 @@ import { executablePath } from 'puppeteer'
 const host = '127.0.0.1'
 const port = 4173
 const origin = `http://${host}:${port}`
-const routes = ['/', '/projects', '/projects/ai-tutor', '/skills', '/about']
+const routes = [
+  '/',
+  '/projects',
+  '/projects/ai-tutor',
+  '/projects/stemwijs',
+  '/projects/portfolio-website',
+  '/skills',
+  '/about',
+]
 const minimumScores = { accessibility: 0.95, performance: 0.75, seo: 0.95 }
 const maximumMetrics = {
   largestContentfulPaintMs: 2500,

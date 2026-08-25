@@ -12,6 +12,7 @@ This portfolio is a Vue 3 application built with TypeScript and Vite.
 - `src/types/` contains shared TypeScript types.
 - `src/composables/` contains reusable Composition API logic.
 - `src/assets/` contains imported images and icons.
+- `tests/` contains browser-level regression tests for the public application.
 
 ## Current routes
 
@@ -87,6 +88,14 @@ Lower-level modules must not import views or layouts. Components should receive
 content through typed props rather than importing page-specific data directly
 when the same component may be reused. Avoid introducing a global store until
 state is demonstrably shared across routes.
+
+## Testing
+
+`tests/site.browser.test.ts` renders views and shared layout components with
+their router dependencies in Vitest Browser Mode. These tests protect public
+content, navigation, keyboard behaviour, image metadata, and motion
+preferences. Lighthouse in `scripts/audit-site.mjs` separately measures the
+production build's accessibility, performance, and SEO budgets.
 
 ## Naming conventions
 
