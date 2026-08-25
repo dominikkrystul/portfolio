@@ -36,3 +36,10 @@ This file records the decisions that shape the portfolio.
 - **Decision:** Render the AI Tutor mascot as inline SVG and animate it with CSS.
 - **Context:** The mascot adds project-specific personality but does not need a 3D rendering stack.
 - **Consequences:** The greeting remains lightweight, uses the existing palette, and respects reduced-motion preferences without runtime dependencies.
+
+## Test Vue in a real browser
+
+- **Date:** 2026-08-25
+- **Decision:** Use Vitest Browser Mode with the Playwright provider for frontend regression tests, and retain Lighthouse for performance, accessibility, and SEO budgets.
+- **Context:** The portfolio's important behaviour includes routed content, keyboard menu interaction, image rendering, CSS animation, and reduced-motion preferences. A simulated DOM would not reliably cover the browser-specific parts.
+- **Consequences:** Tests share the Vite/Vue toolchain and run in Chromium in local development and CI. The Chromium runtime is cached in CI and reused by Lighthouse, so the pipeline downloads one browser. Lighthouse remains separate because its scores are production-audit measurements, not functional assertions. Its LCP budget is 2.7 s to avoid failing on normal variation in one simulated measurement.

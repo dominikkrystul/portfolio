@@ -168,12 +168,12 @@ const imageFailed = shallowRef(false)
 .project-card__mascot {
   position: absolute;
   top: 50%;
-  left: clamp(3.7rem, 7vw, 5rem);
+  left: clamp(6rem, 10vw, 8rem);
   z-index: 1;
   width: clamp(5.4rem, 8.5vw, 6.5rem);
   height: clamp(4rem, 6vw, 4.75rem);
   pointer-events: none;
-  transform: translateY(-50%) rotate(7deg);
+  transform: translateY(-50%) rotate(11deg);
   overflow: clip;
 }
 

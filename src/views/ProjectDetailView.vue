@@ -3,6 +3,7 @@ import { computed, watchEffect } from 'vue'
 import { RouterLink } from 'vue-router'
 import ProjectCaseStudy from '../components/projects/ProjectCaseStudy.vue'
 import { getProjectBySlug } from '../data/projects'
+import { updateSeoMetadata } from '../utils/seo'
 
 const props = defineProps<{
   slug: string
@@ -11,9 +12,17 @@ const props = defineProps<{
 const project = computed(() => getProjectBySlug(props.slug))
 
 watchEffect(() => {
-  document.title = project.value
-    ? `${project.value.title} — Dominik Krystul`
-    : 'Project not found — Dominik Krystul'
+  const currentProject = project.value
+
+  updateSeoMetadata({
+    title: currentProject
+      ? `${currentProject.title} — Dominik Krystul`
+      : 'Project not found — Dominik Krystul',
+    description:
+      currentProject?.summary ??
+      'The requested project is not in the portfolio data.',
+    path: `/projects/${props.slug}`,
+  })
 })
 </script>
 

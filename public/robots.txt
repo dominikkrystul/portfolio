@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dominikkrystul.github.io/portfolio/sitemap.xml

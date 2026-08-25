@@ -30,8 +30,10 @@
           height="11"
           rx="2"
         />
-        <path class="ai-tutor-mascot__arm" d="M84 73 103 58" />
-        <circle class="ai-tutor-mascot__hand" cx="105" cy="56" r="6" />
+        <g class="ai-tutor-mascot__waving-arm">
+          <path class="ai-tutor-mascot__arm" d="M84 73 103 58" />
+          <circle class="ai-tutor-mascot__hand" cx="105" cy="56" r="6" />
+        </g>
         <path class="ai-tutor-mascot__arm-static" d="M36 73 20 82" />
       </g>
     </svg>
@@ -84,7 +86,7 @@
   stroke-width: 3;
 }
 
-.ai-tutor-mascot__arm {
+.ai-tutor-mascot__waving-arm {
   transform-origin: 84px 73px;
   animation: robot-wave 5.8s ease-in-out infinite;
 }
@@ -125,7 +127,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .ai-tutor-mascot__robot,
-  .ai-tutor-mascot__arm {
+  .ai-tutor-mascot__waving-arm {
     animation: none;
   }
 }
