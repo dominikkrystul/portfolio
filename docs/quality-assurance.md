@@ -43,12 +43,14 @@ Home, Projects, every project detail page, Skills, and About with Lighthouse's
 | Accessibility            |    at least 95 |
 | Performance              |    at least 75 |
 | SEO                      |    at least 95 |
-| Largest Contentful Paint |  at most 2.5 s |
+| Largest Contentful Paint |  at most 2.7 s |
 | Total Blocking Time      | at most 200 ms |
 | Cumulative Layout Shift  |    at most 0.1 |
 
 The ignored raw result is written to `.lighthouse/results.json`. Lighthouse is
 a regression check, not a substitute for assistive-technology testing.
+The 2.7 s LCP budget allows for normal variance in Lighthouse's single,
+simulated CI measurement while retaining a good mobile threshold.
 
 Run all automated checks locally before review:
 

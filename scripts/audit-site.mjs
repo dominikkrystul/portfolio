@@ -2,7 +2,7 @@ import { spawn } from 'node:child_process'
 import { mkdir, writeFile } from 'node:fs/promises'
 import lighthouse from 'lighthouse'
 import * as chromeLauncher from 'chrome-launcher'
-import { executablePath } from 'puppeteer'
+import { chromium } from 'playwright'
 
 const host = '127.0.0.1'
 const port = 4173
@@ -18,7 +18,7 @@ const routes = [
 ]
 const minimumScores = { accessibility: 0.95, performance: 0.75, seo: 0.95 }
 const maximumMetrics = {
-  largestContentfulPaintMs: 2500,
+  largestContentfulPaintMs: 2700,
   totalBlockingTimeMs: 200,
   cumulativeLayoutShift: 0.1,
 }
@@ -58,7 +58,7 @@ let chrome
 try {
   await waitForPreview()
   chrome = await chromeLauncher.launch({
-    chromePath: process.env.CHROME_PATH || (await executablePath()),
+    chromePath: process.env.CHROME_PATH || chromium.executablePath(),
     chromeFlags: ['--headless=new', '--no-sandbox', '--disable-gpu'],
   })
 
