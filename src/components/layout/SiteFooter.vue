@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const cvUrl = `${import.meta.env.BASE_URL}cv_EN.pdf`
 const year = new Date().getFullYear()
 </script>
 
@@ -38,7 +39,7 @@ const year = new Date().getFullYear()
         </a>
         <a
           class="site-footer__link"
-          href="/cv_EN.pdf"
+          :href="cvUrl"
           target="_blank"
           rel="noreferrer"
         >
