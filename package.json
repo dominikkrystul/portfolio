@@ -42,6 +42,7 @@
     "vite": "^8.2.0",
     "vitest": "^4.1.11",
     "vitest-browser-vue": "^2.1.0",
+    "vue-eslint-parser": "^10.4.1",
     "vue-tsc": "^3.3.8"
   }
 }
