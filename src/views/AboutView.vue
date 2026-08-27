@@ -2,6 +2,8 @@
 import { RouterLink } from 'vue-router'
 import { aboutContent } from '../data/about'
 import PersonalGallery from '../components/about/PersonalGallery.vue'
+
+const cvUrl = `${import.meta.env.BASE_URL}cv_EN.pdf`
 </script>
 
 <template>
@@ -19,12 +21,7 @@ import PersonalGallery from '../components/about/PersonalGallery.vue'
             {{ aboutContent.intro.internship.value }}
           </p>
           <div class="about-internship__actions">
-            <a
-              class="text-link"
-              href="/cv_EN.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
+            <a class="text-link" :href="cvUrl" target="_blank" rel="noreferrer">
               View my CV <span aria-hidden="true">↗</span>
             </a>
             <RouterLink class="secondary-link" to="/#contact">

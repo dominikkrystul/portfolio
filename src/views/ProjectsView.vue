@@ -2,6 +2,8 @@
 import { RouterLink } from 'vue-router'
 import ProjectCard from '../components/projects/ProjectCard.vue'
 import { projects } from '../data/projects'
+
+const cvUrl = `${import.meta.env.BASE_URL}cv_EN.pdf`
 </script>
 
 <template>
@@ -37,7 +39,7 @@ import { projects } from '../data/projects'
         <RouterLink class="projects-practice__primary text-link" to="/skills">
           See skills <span aria-hidden="true">→</span>
         </RouterLink>
-        <a class="projects-practice__secondary" href="/cv_EN.pdf">
+        <a class="projects-practice__secondary" :href="cvUrl">
           View CV <span aria-hidden="true">↗</span>
         </a>
       </div>
