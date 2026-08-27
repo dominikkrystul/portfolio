@@ -116,7 +116,7 @@ from shifting the footer during startup.
 Every route updates its title, description, canonical URL, Open Graph fields,
 and X (Twitter) card fields. `public/robots.txt` links to `public/sitemap.xml`.
 
-The configured origin is the planned GitHub Pages URL:
-`https://dominikkrystul.github.io/portfolio`. Update `siteUrl` in
+The configured origin is the production URL: `https://dominikkrystul.com`.
+Update `siteUrl` in
 `src/utils/seo.ts`, `index.html`, `public/robots.txt`, and
 `public/sitemap.xml` together if the production domain changes.

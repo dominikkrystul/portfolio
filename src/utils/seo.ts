@@ -1,4 +1,4 @@
-const siteUrl = 'https://dominikkrystul.github.io/portfolio'
+const siteUrl = 'https://dominikkrystul.com'
 const socialImageUrl = `${siteUrl}/social-preview.png`
 
 interface SeoMetadata {
