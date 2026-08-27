@@ -1,5 +1,6 @@
 dist
 node_modules
+.vercel
 .impeccable
 package-lock.json
 public/robots.txt
