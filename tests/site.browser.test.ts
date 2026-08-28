@@ -148,9 +148,7 @@ describe('portfolio frontend', () => {
     await expect
       .element(screen.getByText(aboutContent.intro.internship.value))
       .toBeVisible()
-    await expect
-      .element(screen.getByRole('link', { name: /View my CV/i }))
-      .toHaveAttribute('href', '/cv_EN.pdf')
+    expect(screen.container.querySelector('a[href="/cv_EN.pdf"]')).toBeNull()
     expectAccessibleImages(screen.container)
   })
 
