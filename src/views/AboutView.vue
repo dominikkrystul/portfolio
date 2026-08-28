@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router'
 import { aboutContent } from '../data/about'
 import PersonalGallery from '../components/about/PersonalGallery.vue'
 
-const cvUrl = `${import.meta.env.BASE_URL}cv_EN.pdf`
+// TODO: Re-enable the CV link after updating the PDF's contact details.
 </script>
 
 <template>
@@ -21,9 +21,7 @@ const cvUrl = `${import.meta.env.BASE_URL}cv_EN.pdf`
             {{ aboutContent.intro.internship.value }}
           </p>
           <div class="about-internship__actions">
-            <a class="text-link" :href="cvUrl" target="_blank" rel="noreferrer">
-              View my CV <span aria-hidden="true">↗</span>
-            </a>
+            <!-- TODO: Re-enable CV after updating the PDF's contact details. -->
             <RouterLink class="secondary-link" to="/#contact">
               Get in touch <span aria-hidden="true">↗</span>
             </RouterLink>

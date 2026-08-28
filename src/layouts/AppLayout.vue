@@ -12,7 +12,7 @@ import SiteFooter from '../components/layout/SiteFooter.vue'
 
 const isMenuOpen = shallowRef(false)
 const route = useRoute()
-const cvUrl = `${import.meta.env.BASE_URL}cv_EN.pdf`
+// TODO: Re-enable the CV link after updating the PDF's contact details.
 const menuToggle = useTemplateRef<HTMLButtonElement>('menuToggle')
 const mainContent = useTemplateRef<HTMLElement>('mainContent')
 
@@ -87,7 +87,7 @@ onUnmounted(() => window.removeEventListener('keydown', handleKeydown))
           >
           <RouterLink to="/skills" active-class="is-active">Skills</RouterLink>
           <RouterLink to="/about" active-class="is-active">About</RouterLink>
-          <a :href="cvUrl" target="_blank" rel="noreferrer">CV ↗</a>
+          <!-- TODO: Re-enable CV after updating the PDF's contact details. -->
           <RouterLink class="site-nav__contact" to="/#contact">
             Contact <span aria-hidden="true">↗</span>
           </RouterLink>
