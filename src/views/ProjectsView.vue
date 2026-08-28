@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router'
 import ProjectCard from '../components/projects/ProjectCard.vue'
 import { projects } from '../data/projects'
 
-const cvUrl = `${import.meta.env.BASE_URL}cv_EN.pdf`
+// TODO: Re-enable the CV link after updating the PDF's contact details.
 </script>
 
 <template>
@@ -39,9 +39,7 @@ const cvUrl = `${import.meta.env.BASE_URL}cv_EN.pdf`
         <RouterLink class="projects-practice__primary text-link" to="/skills">
           See skills <span aria-hidden="true">→</span>
         </RouterLink>
-        <a class="projects-practice__secondary" :href="cvUrl">
-          View CV <span aria-hidden="true">↗</span>
-        </a>
+        <!-- TODO: Re-enable CV after updating the PDF's contact details. -->
       </div>
     </section>
   </div>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const cvUrl = `${import.meta.env.BASE_URL}cv_EN.pdf`
+// TODO: Re-enable the CV link after updating the PDF's contact details.
 const year = new Date().getFullYear()
 </script>
 
@@ -37,15 +37,7 @@ const year = new Date().getFullYear()
           <span>GitHub</span>
           <span aria-hidden="true">↗</span>
         </a>
-        <a
-          class="site-footer__link"
-          :href="cvUrl"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <span>View CV</span>
-          <span aria-hidden="true">↗</span>
-        </a>
+        <!-- TODO: Re-enable CV after updating the PDF's contact details. -->
       </nav>
     </div>
 
