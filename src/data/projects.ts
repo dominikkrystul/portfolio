@@ -129,8 +129,6 @@ export const projects: Project[] = [
     ],
     links: {
       repository: 'https://github.com/dominikkrystul/ai-tutor',
-      documentation:
-        'https://studio-rai-group-project-2t1g-b53f79.dev.hihva.nl/',
     },
   },
   {

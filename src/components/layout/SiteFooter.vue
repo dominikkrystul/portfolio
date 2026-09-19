@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// TODO: Re-enable the CV link after updating the PDF's contact details.
 const year = new Date().getFullYear()
 </script>
 
@@ -37,7 +36,15 @@ const year = new Date().getFullYear()
           <span>GitHub</span>
           <span aria-hidden="true">↗</span>
         </a>
-        <!-- TODO: Re-enable CV after updating the PDF's contact details. -->
+        <a
+          class="site-footer__link"
+          href="/Dominik_Krystul_CV.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
+          <span>CV</span>
+          <span aria-hidden="true">↗</span>
+        </a>
       </nav>
     </div>
 
