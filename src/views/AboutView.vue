@@ -2,8 +2,6 @@
 import { RouterLink } from 'vue-router'
 import { aboutContent } from '../data/about'
 import PersonalGallery from '../components/about/PersonalGallery.vue'
-
-// TODO: Re-enable the CV link after updating the PDF's contact details.
 </script>
 
 <template>
@@ -21,7 +19,14 @@ import PersonalGallery from '../components/about/PersonalGallery.vue'
             {{ aboutContent.intro.internship.value }}
           </p>
           <div class="about-internship__actions">
-            <!-- TODO: Re-enable CV after updating the PDF's contact details. -->
+            <a
+              class="secondary-link"
+              href="/Dominik_Krystul_CV.pdf"
+              target="_blank"
+              rel="noreferrer"
+            >
+              CV <span aria-hidden="true">↗</span>
+            </a>
             <RouterLink class="secondary-link" to="/#contact">
               Get in touch <span aria-hidden="true">↗</span>
             </RouterLink>

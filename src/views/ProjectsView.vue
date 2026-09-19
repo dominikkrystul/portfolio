@@ -2,8 +2,6 @@
 import { RouterLink } from 'vue-router'
 import ProjectCard from '../components/projects/ProjectCard.vue'
 import { projects } from '../data/projects'
-
-// TODO: Re-enable the CV link after updating the PDF's contact details.
 </script>
 
 <template>
@@ -39,7 +37,14 @@ import { projects } from '../data/projects'
         <RouterLink class="projects-practice__primary text-link" to="/skills">
           See skills <span aria-hidden="true">→</span>
         </RouterLink>
-        <!-- TODO: Re-enable CV after updating the PDF's contact details. -->
+        <a
+          class="projects-practice__secondary text-link"
+          href="/Dominik_Krystul_CV.pdf"
+          target="_blank"
+          rel="noreferrer"
+        >
+          CV <span aria-hidden="true">↗</span>
+        </a>
       </div>
     </section>
   </div>
