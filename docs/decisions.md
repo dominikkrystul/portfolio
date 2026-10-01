@@ -1,5 +1,12 @@
 # Architecture decisions
 
+## Follow the visitor's theme preference
+
+- **Date:** 2026-10-01
+- **Decision:** Show a two-position Light/Dark switch in the shared header. Follow `prefers-color-scheme` until the visitor chooses a theme, then keep that choice in `sessionStorage` for the current tab session.
+- **Context:** Visitors may prefer a dark reading surface or expect the portfolio to follow their device setting.
+- **Consequences:** The document theme is set before first paint. System changes apply live until the switch is used; a new browser session follows the system again. If storage is unavailable, the choice works until the page closes. Maintain both palettes through CSS variables and verify contrast on every route.
+
 This file records the decisions that shape the portfolio.
 
 ## Initial structure
