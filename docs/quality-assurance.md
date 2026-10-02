@@ -36,7 +36,10 @@ npm run audit:site
 
 The command builds the production site, starts a local preview, and audits
 Home, Projects, every project detail page, Skills, and About with Lighthouse's
-390 × 844 mobile profile. It fails when any route misses a budget:
+390 × 844 mobile profile in both Light and Dark. Each run sets an explicit
+theme in session storage in the same tab it audits. Lighthouse clears browser
+caches for each measurement while retaining that theme choice. It fails when any route or
+theme misses a budget:
 
 | Check                    |         Budget |
 | ------------------------ | -------------: |
@@ -81,7 +84,7 @@ with Escape, and produced no console warnings or errors.
 
 Pass criteria: no horizontal overflow, visible main content, exactly one
 `main` and one `h1`, the mobile menu is present at 390 px and replaced by the
-desktop navigation from 768 px, and no console warnings or errors occur.
+desktop navigation from 900 px, and no console warnings or errors occur.
 
 | Route           | 390 × 844 | 768 × 844 | 1280 × 844 |
 | --------------- | --------- | --------- | ---------- |
