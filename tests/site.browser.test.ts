@@ -18,6 +18,7 @@ import '../src/style.css'
 const projectTitles = ['AI Tutor', 'StemWijs', 'Portfolio website']
 const browserCommands = commands as typeof commands & {
   setReducedMotion(value: 'reduce' | 'no-preference'): Promise<void>
+  setColorScheme(value: 'light' | 'dark'): Promise<void>
 }
 
 function expectAccessibleImages(container: HTMLElement) {
@@ -197,5 +198,39 @@ describe('portfolio frontend', () => {
     await userEvent.keyboard('{Escape}')
     await expect.element(menu).toHaveAttribute('aria-expanded', 'false')
     await expect.element(menu).toHaveFocus()
+  })
+
+  test('follows the system until the visitor switches theme for this session', async () => {
+    sessionStorage.removeItem('theme')
+    await browserCommands.setColorScheme('light')
+    const router = await createTestRouter()
+    const screen = await render(AppLayout, { global: { plugins: [router] } })
+    const menu = screen.getByRole('button', { name: /menu/i })
+    await menu.click()
+    const theme = screen.getByRole('switch', { name: 'Dark mode' })
+    const moon = screen.container.querySelector('.theme-switch svg:last-child')
+    if (!moon) throw new Error('Dark mode icon was not rendered')
+
+    await browserCommands.setReducedMotion('reduce')
+    expect(getComputedStyle(moon).transitionDuration).toBe('0s')
+    await browserCommands.setReducedMotion('no-preference')
+
+    await expect.element(theme).toHaveAttribute('aria-checked', 'false')
+    await browserCommands.setColorScheme('dark')
+    await expect.element(theme).toHaveAttribute('aria-checked', 'true')
+    await browserCommands.setColorScheme('light')
+    await expect.element(theme).toHaveAttribute('aria-checked', 'false')
+
+    await theme.click()
+    await expect.element(theme).toHaveAttribute('aria-checked', 'true')
+    expect(sessionStorage.getItem('theme')).toBe('dark')
+    expect(document.documentElement.dataset.theme).toBe('dark')
+
+    await browserCommands.setColorScheme('dark')
+    await browserCommands.setColorScheme('light')
+    await expect.element(theme).toHaveAttribute('aria-checked', 'true')
+    await theme.click()
+    expect(sessionStorage.getItem('theme')).toBe('light')
+    await expect.element(theme).toHaveAttribute('aria-checked', 'false')
   })
 })
