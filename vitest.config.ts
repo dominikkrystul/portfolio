@@ -7,6 +7,11 @@ export default defineConfig({
   test: {
     browser: {
       commands: {
+        setColorScheme: defineBrowserCommand(
+          async ({ page }, value: 'light' | 'dark') => {
+            await page.emulateMedia({ colorScheme: value })
+          },
+        ),
         setReducedMotion: defineBrowserCommand(
           async ({ page }, value: 'reduce' | 'no-preference') => {
             await page.emulateMedia({ reducedMotion: value })

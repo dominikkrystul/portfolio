@@ -36,7 +36,8 @@ npm run test:ci
 ```
 
 `test` starts Vitest Browser Mode in watch mode. `test:e2e` runs it once for CI.
-`audit:site` enforces Lighthouse accessibility, performance, and SEO budgets.
+`audit:site` enforces Lighthouse accessibility, performance, and SEO budgets
+for both light and dark themes.
 `test:ci` runs the complete local equivalent of the GitHub Actions workflow.
 Run `npm run format` to apply the shared Prettier formatting rules.
 See `docs/quality-assurance.md` for the audit budgets and manual QA matrix.

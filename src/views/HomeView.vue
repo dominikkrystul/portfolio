@@ -3,7 +3,7 @@ import { RouterLink } from 'vue-router'
 import FeaturedProjects from '../components/home/FeaturedProjects.vue'
 import HomePortraitPlaceholder from '../components/home/HomePortraitPlaceholder.vue'
 import { featuredProjects } from '../data/projects'
-import portraitIllustration from '../assets/images/home-portrait-filled.webp'
+import portraitIllustration from '../assets/images/home-portrait-cutout.webp'
 </script>
 
 <template>
